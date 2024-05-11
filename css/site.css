@@ -1,0 +1,8 @@
+.team-info-container{
+    display: flex;
+    align-items: center;
+}
+
+#team-info{
+    margin-right: 10px;
+}

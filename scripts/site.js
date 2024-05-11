@@ -53,6 +53,12 @@ function initialize() {
 
     select.innerHTML = "";
 
+    // default team
+    let defaultOption = document.createElement("option");
+    defaultOption.text = "select a team";
+    defaultOption.value = "";
+    select.appendChild(defaultOption)
+
     for (let i = 0; i < nfl_teams.length; i++) {
         let option = document.createElement("option");
         option.text = nfl_teams[i].name;
@@ -79,8 +85,26 @@ function displayInfo() {
     }
 
     let infoParagraph = document.getElementById("team-info");
+    let teamImage = document.getElementById("team-image")
 
-    infoParagraph.innerHTML = `Team: ${selectedTeamName}, Location: ${selectedTeamPlays}`
+
+    if (selectedTeamCode) {
+        //if team is selected
+        infoParagraph.innerHTML = ` You Selected: ${selectedTeamName}, who plays in: ${selectedTeamPlays}`;
+        teamImage.src = `images/${selectedTeamCode}.jpeg`;
+        teamImage.style.display = "block"; //show the image
+
+    } else {
+        infoParagraph.innerHTML = "";
+        teamImage.src = "";
+        teamImage.style.display = "none";
+    }
+
+
+    // grabbing the pcitures depedig on team code
+    //only Cardinals hava picture right now
+
+    return false; //prevent the default form submission
 
 }
 
